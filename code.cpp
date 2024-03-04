@@ -4,6 +4,7 @@
 #include "R.h"
 #include "I.h"
 #include "S.h"
+#include "U.h"
 using namespace std;
 //R format
 vector<string>Rf;
@@ -11,6 +12,8 @@ vector<string>Rf;
 vector<string>If;
 //S format
 vector<string>Sf;
+//U format
+vector<string>Uf;
 
 int main()
 {
@@ -50,14 +53,15 @@ int main()
     If.push_back("lh");
     If.push_back("lw");
     If.push_back("jalr");
-    //Adding S format
+    //Adding S format instructions
     Sf.push_back("sb");
     Sf.push_back("sw");
     Sf.push_back("sd");
     Sf.push_back("sh");
     //Addig Sb format
-
-
+    //Adding U format instructions
+    Uf.push_back("auipc");
+    Uf.push_back("lui");
     
     int flag=0;
     for(int i=0;i<lines.size();i++)
@@ -128,8 +132,21 @@ int main()
             cout<<ans<<"\n";
 
         }
-        //Next time I will do S Mnemonics
-        
+        //checking if it is U format mnemonic
+        if(ans=="")
+        {
+            for(int k=0;k<Uf.size();k++)
+            {
+                if(Mnemonic==Uf[k])
+                {
+                    ans=U(lines[i],j,Mnemonic);
+                    break;
+                }
+            
+            }
+            cout<<ans<<"\n";
+
+        }        
 
     }
     
