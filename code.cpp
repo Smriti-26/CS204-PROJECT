@@ -276,7 +276,7 @@ int main()
                 {
                     if(Mnemonic==Sbf[k])
                     {
-                        ans=S(lines[i],j,Mnemonic);
+                        ans=Sb(lines[i],j,Mnemonic);
                         break;
                     }
             
@@ -307,14 +307,14 @@ int main()
                 }
 
             }
-            //Checking if its UJ format Knemonics
+            //Checking if its UJ format mnemonics
             if(ans=="")
             {
                 for(int k=0;k<Jf.size();k++)
                 {
                     if(Mnemonic==Jf[k])
                     {
-                        ans=S(lines[i],j,Mnemonic);
+                        ans=J(lines[i],j,Mnemonic);
                         break;
                     }
             
