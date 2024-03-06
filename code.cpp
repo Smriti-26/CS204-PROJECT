@@ -276,7 +276,7 @@ int main()
                 {
                     if(Mnemonic==Sbf[k])
                     {
-                        ans=S(lines[i],j,Mnemonic);
+                        ans=Sb(lines[i],j,Mnemonic);
                         break;
                     }
             
