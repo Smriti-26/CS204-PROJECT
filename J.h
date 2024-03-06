@@ -16,7 +16,7 @@ string funn3(string Mnemonic)
         return "000"; // Default case
 }
 
-bool isValidLabel(const string &s)
+/*bool isValidLabel(const string &s)
 {
     // Check if the string contains at least one character
     if (s.empty())
@@ -36,7 +36,8 @@ bool isValidLabel(const string &s)
     // Check if the last character is a colon
     return s.back() == ':';
 }
-
+*/ 
+//not needed
 string UJ(string s, int j, string Mnemonic, unordered_map<string, int> &labelAddresses)
 {
     string rd = "";    // Destination register
@@ -55,9 +56,9 @@ string UJ(string s, int j, string Mnemonic, unordered_map<string, int> &labelAdd
                 i++;
             }
         }
-        else if (isalpha(s[i]) || s[i] == '_')
+        else
         { // Detecting label
-            while (isalnum(s[i]) || s[i] == '_')
+            while (s[i]!=" " || s[i]!="\n")
             {
                 label += s[i];
                 i++;
@@ -65,15 +66,10 @@ string UJ(string s, int j, string Mnemonic, unordered_map<string, int> &labelAdd
             // Check if the last character is a colon
             if (s[i] == ':')
             {
-                if (isValidLabel(label))
-                {
                     // Resolve label to its address
                     int targetAddress = labelAddresses[label];
-                    // Calculate offset
-                    int currentAddress = // calculate current address
-                        int offset = targetAddress - currentAddress;
                     // Set immediate value
-                    string imm = to_string(offset);
+                    string imm = to_string(targetAddress);
                     // Adding opcode
                     ans += "1101111";
                     // Adding imm[20]
@@ -102,12 +98,6 @@ string UJ(string s, int j, string Mnemonic, unordered_map<string, int> &labelAdd
                     string hex = bintodec(ans);
                     // Returning in hexadecimal
                     return hex;
-                }
-                else
-                {
-                    // Invalid label format
-                    // Handle error or throw exception
-                }
             }
         }
     }
